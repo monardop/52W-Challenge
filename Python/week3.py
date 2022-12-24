@@ -7,9 +7,19 @@
 """
 def prime_number(number: int) -> bool:
     for n in range(2,number):
-        if number%n == 0:
+        if number%n == 0 and number != 2:
             return False
     return True 
+
+def create_list(num: int)-> None:
+    if num < 102:
+        for n in range(2,100):
+            if prime_number(n):
+                print(n, end="  ")
+    else: 
+        for n in range(num-100, num+1):
+            if prime_number(n):
+                print(n, end="  ")
 
 def main():
     while True:
@@ -22,6 +32,7 @@ def main():
             break
     if prime_number(num):
         print("Es primo")
+        create_list(num)
     else:
         print("No es primo")
 
