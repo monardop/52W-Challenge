@@ -11,3 +11,11 @@
 
 """
 
+import requests
+
+url_imagen = "https://raw.githubusercontent.com/mouredev/mouredev/master/mouredev_github_profile.png"
+
+imagen = requests.get(url_imagen).content
+
+with open("imagen.jpg","wb") as f:
+    f.write(imagen)
