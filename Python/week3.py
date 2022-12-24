@@ -10,11 +10,13 @@
 def main():
     print("Insertar un número, se darán 100 números con el suyo como centro")
     while True:
+        num = input("Insertar un numero: ")
         try: 
-            num = int(input("Insertar un numero: "))
-            if num is not int:
-                raise TypeError
-            else:
-                break
-        except TypeError:
+            num = int(num)
+        except ValueError:
             print("Eso no es un número.")
+        else:
+            break
+
+if __name__ == "__main__":
+    main()
