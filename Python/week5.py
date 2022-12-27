@@ -34,4 +34,4 @@ elif ratio == 1.33:
 elif ratio == 1:
     print("The ratio is 1:1 (square)")
 else: 
-    print("Unknow ratio")
+    print("Unknown ratio")
