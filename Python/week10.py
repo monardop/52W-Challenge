@@ -11,3 +11,14 @@
  *
 """
 
+
+def balance_check(a: str, b: str):
+    return form_list.count(a) == form_list.count(b)
+
+
+form = input("Insert the equation: ")
+form_list = [n for n in form]
+for a, b in zip(['(', '{', '['], [')', '}', ']']):
+    if not balance_check(a, b):
+        print(f"There was an error on {a}{b}")
+        break
