@@ -9,3 +9,5 @@
 """
 
 phrase = input("Insert a string: ")
+for n in range(1, len(phrase)+1):
+    print(phrase[-n], end="")
