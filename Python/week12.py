@@ -8,3 +8,12 @@
  * NO se tienen en cuenta los espacios, signos de puntuación y tildes.
  * Ejemplo: Ana lleva al oso la avellana.
 """
+
+
+def palindrome_check(phrase: str) -> bool:
+    phrase = phrase.replace(" ", "").lower()
+    aux_phrase = phrase[::-1]
+    return phrase == aux_phrase
+
+
+print(palindrome_check(input("Inserte una frase: ")))
