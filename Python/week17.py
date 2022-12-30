@@ -31,3 +31,23 @@ def game_set() -> str:
                 raise ValueError
         except ValueError:
             print("Wrong entry")
+        else:
+            return game
+
+
+def load_player(game: str):
+    player_name = input("Insert player's name: ")
+    play = ""
+    for section in game:
+        option = ""
+        while True:
+            try:
+                option = input("Did s/he jump or run? ").lower()
+                if option != "jump" and option != "run":
+                    raise ValueError
+            except ValueError:
+                print("Wrong entry")
+            else:
+                break
+        
+
