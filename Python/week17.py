@@ -19,3 +19,15 @@
 """
 
 
+def game_set() -> str:
+    print("The game is set with two values: _ floor, | jump")
+    while True:
+        try:
+            game = input("Set the game: ")
+            for n in game:
+                if n != "_" or n != "|":
+                    break
+            else:
+                raise ValueError
+        except ValueError:
+            print("Wrong entry")
