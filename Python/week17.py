@@ -42,7 +42,7 @@ def load_player(game: str) -> tuple:
         option = ""
         while True:
             try:
-                option = input("Did s/he jump or run? ").lower()
+                option = input("Did s/he jump or run? ").lower().strip()
                 if option != "jump" and option != "run":
                     raise ValueError
             except ValueError:
@@ -74,25 +74,21 @@ def point_count(player: tuple) -> int:
 
 def continue_menu() -> bool:
     while True:
-        ans = int(input("To continue adding players, insert 1, else insert 0: "))
-        if ans == 1:
-            return True
-        elif ans == 0:
-            return False
-        else:
+        try:
+            ans = int(input("To continue adding players, insert 1, else insert 0: "))
+            if ans == 1:
+                return True
+            elif ans == 0:
+                return False
+            else:
+                raise ValueError
+        except ValueError:
             print("Wrong entry")
 
 
 def score(participants: list) -> None:
-    total_score = {}
-    for player in participants:
-        if player[1] in total_score:
-            total_score[player[1]].append(player[0])
-        else:
-            total_score[player[1]] = []
-    sorted_score = sorted(total_score)
-    for n in sorted_score:
-        print(total_score[n])
+    participants = participants.sort(key=participants[1])
+    print(participants)
 
 
 def main():
@@ -103,8 +99,8 @@ def main():
 
     while add:
         player = load_player(game)
-        points = point_count(player)
-        participants.append([player[0], points])
+        errors = point_count(player)
+        participants.append([player[0], errors]) # player[0] = player's name
         add = continue_menu()
 
     if len(participants) > 1:
@@ -115,5 +111,5 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
+
 # TODO: correct the scoreboard
