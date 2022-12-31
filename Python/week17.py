@@ -86,9 +86,18 @@ def continue_menu() -> bool:
             print("Wrong entry")
 
 
-def score(participants: list) -> None:
-    participants = participants.sort(key=participants[1])
-    print(participants)
+def score(participants: list, game_len: int) -> None:
+    winner = {}
+    errors = 0
+    while errors < game_len:
+        names = []
+        for player in participants:
+            if player[1] == errors:
+                names.append(player[0])
+        if names:
+            winner[errors] = names
+        errors += 1
+    print(winner)
 
 
 def main():
@@ -100,16 +109,14 @@ def main():
     while add:
         player = load_player(game)
         errors = point_count(player)
-        participants.append([player[0], errors]) # player[0] = player's name
+        participants.append([player[0], errors])  # player[0] = player's name
         add = continue_menu()
 
     if len(participants) > 1:
-        score(participants)
+        score(participants, len(game))
 
     return 0
 
 
 if __name__ == '__main__':
     main()
-
-# TODO: correct the scoreboard
