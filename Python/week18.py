@@ -44,17 +44,31 @@ def set_game() -> list:
     :return:
     game-board list.
     """
-    game_board = [['', '', ''], ['', '', ''], ['', '', '']]
+    game_board = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
     show_game(game_board)
+
     return game_board
 
 
 def valid_entry(game_board: list) -> tuple:
     """
     Check that the entry does not go outside the bounds and that it is not occupied.
-    :param game_board:
-    :return:
+    :param game_board: Used to check that the selected cell is not occupied
+    :return: The verified row and column selection.
     """
+    while True:
+        try:
+            row = int(input("Row: "))
+            column = int(input("Column: "))
+
+        except ValueError:
+            print("Wrong entry")
+        else:
+            if game_board[row][column] != ' ':
+                return row, column
+            else:
+                print("Cell already taken, try again")
+                show_game(game_board)
 
 
 def set_play(game_board: list, play: str) -> bool:
@@ -63,7 +77,6 @@ def set_play(game_board: list, play: str) -> bool:
     :param game_board: the updated game-board
     :param play: Can be x or o.
     :return: Returns a boolean that sets whether the game has ended.
-
     """
     row, column = valid_entry(game_board)
     game_board[row][column] = play
