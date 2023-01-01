@@ -12,6 +12,7 @@
 """
 from os import system
 
+
 def check_status() -> int:
     """
     Checks if the move is a winner or generates a draw.
@@ -28,14 +29,13 @@ def show_game(game_board: list) -> None:
     """
     separator = "-"
     i = 0
-    
+
     system('cls')
     for n in game_board:
         print(f" {n[0]} | {n[1]} | {n[2]} ")
         if i != 2:
             print(separator*11)
             i += 1
-
 
 
 def set_game() -> list:
@@ -45,5 +45,28 @@ def set_game() -> list:
     game-board list.
     """
     game_board = [['', '', ''], ['', '', ''], ['', '', '']]
+    show_game(game_board)
     return game_board
+
+
+def valid_entry(game_board: list) -> tuple:
+    """
+    Check that the entry does not go outside the bounds and that it is not occupied.
+    :param game_board:
+    :return:
+    """
+
+
+def set_play(game_board: list, play: str) -> bool:
+    """
+    Set the player's choice
+    :param game_board: the updated game-board
+    :param play: Can be x or o.
+    :return: Returns a boolean that sets whether the game has ended.
+
+    """
+    row, column = valid_entry(game_board)
+    game_board[row][column] = play
+    show_game(game_board)
+
 
