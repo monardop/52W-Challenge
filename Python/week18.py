@@ -10,7 +10,7 @@
  * Nota: La matriz puede no estar totalmente cubierta. Se podría representar con un vacío "", por ejemplo.
  *
 """
-
+from os import system
 
 def check_status() -> int:
     """
@@ -22,10 +22,20 @@ def check_status() -> int:
     """
 
 
-def show_game():
+def show_game(game_board: list) -> None:
     """
     Cleans the console and displays the current game-board.
     """
+    separator = "-"
+    i = 0
+    
+    system('cls')
+    for n in game_board:
+        print(f" {n[0]} | {n[1]} | {n[2]} ")
+        if i != 2:
+            print(separator*11)
+            i += 1
+
 
 
 def set_game() -> list:
@@ -34,5 +44,6 @@ def set_game() -> list:
     :return:
     game-board list.
     """
-
+    game_board = [['', '', ''], ['', '', ''], ['', '', '']]
+    return game_board
 
