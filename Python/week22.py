@@ -9,3 +9,19 @@
  * - No se pueden utilizar operaciones del lenguaje que lo resuelvan directamente.
  *
 """
+
+
+def get_array() -> list:
+    array = input("Separate the values by commas: ")
+    return array.split(',')
+
+
+def intersection(array1, array2):
+    values = []
+    for n in array1:
+        if n in array2:
+            values.append()
+    print(values)
+
+
+def
