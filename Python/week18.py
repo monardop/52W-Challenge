@@ -9,7 +9,6 @@ def check_status(game_board: list) -> int:
     2 for draw
     0 if nothing happened
     """
-    
 
 
 def show_game(game_board: list) -> None:
@@ -49,7 +48,9 @@ def valid_entry(game_board: list) -> tuple:
         try:
             row = int(input("Row: "))
             column = int(input("Column: "))
-
+            for n in [row, column]:
+                if n < 1 or n > 3:
+                    raise ValueError
         except ValueError:
             print("Wrong entry")
         else:
