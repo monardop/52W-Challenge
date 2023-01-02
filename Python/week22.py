@@ -16,12 +16,25 @@ def get_array() -> list:
     return array.split(',')
 
 
-def intersection(array1, array2):
+def intersection(array1: list, array2: list):
     values = []
     for n in array1:
         if n in array2:
-            values.append()
-    print(values)
+            values.append(n)
+    return values
 
 
-def
+def difference(array1: list, array2: list):
+    values = set(array1 + array2)
+    common_values = intersection(array1, array2)
+    return values.difference(common_values)
+
+
+def main():
+    array1 = get_array()
+    array2 = get_array()
+    print(intersection(array1, array2))
+    print(difference(array1, array2))
+
+
+main()
