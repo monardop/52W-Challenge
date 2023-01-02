@@ -124,10 +124,11 @@ def main():
     turn = 1
     for player in ['X', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X']:
         print(f"Turn: {turn} - Player: {player}")
-        if set_play(game, player, turn) == 1:
+        status = set_play(game, player, turn)
+        if  status == 1:
             print(f"The winner is {player}")
             break
-        elif set_play(game, player, turn) == 2:
+        elif status == 2:
             print("DRAW!")
             break
         turn += 1
