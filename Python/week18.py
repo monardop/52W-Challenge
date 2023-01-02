@@ -3,10 +3,9 @@ from os import system
 
 def win_check(board: list, play: str) -> bool:
     """
-
     :param board: imports the updated board
     :param play: imports the actual player
-    :return:
+    :return: True if the actual play is a winner, else false
     """
     # First check the diagonals
     win_sets = [[(0, 0), (1, 1), (2, 2)], [(2, 0), (1, 1), (0, 2)]]
@@ -20,10 +19,27 @@ def win_check(board: list, play: str) -> bool:
             return True
 
     # Now columns and rows
+    for i in range(3):
+        # First rows:
+        row = 0
+        for j in range(3):
+            if board[i][j] == play:
+                row += 1
+        if row == 3:
+            return True
+
+        # Now the columns
+        column = 0
+        for j in range(3):
+            if board[j][i] == play:
+                column += 1
+        if column == 3:
+            return True
+
+    return False
 
 
-
-def check_status() -> int:
+def check_status(board: list, play: str, turn: int) -> int:
     """
     Checks if the move is a winner or generates a draw.
     :return:
@@ -31,6 +47,12 @@ def check_status() -> int:
     2 for draw
     0 if nothing happened
     """
+    if win_check(board, play):
+        return 1
+    else:
+        if turn == 7:
+            return 2
+    return 0
 
 
 def show_game(board: list) -> None:
@@ -83,14 +105,25 @@ def valid_entry(board: list) -> tuple:
                 show_game(board)
 
 
-def set_play(board: list, play: str) -> int:
+def set_play(board: list, play: str, turn: int) -> int:
     """
     Set the player's choice
     :param board: the updated game-board
     :param play: Can be x or o.
+    :param turn:
     :return: Returns a boolean that sets whether the game has ended.
     """
     row, column = valid_entry(board)
     board[row][column] = play
     show_game(board)
-    return check_status(board)
+    return check_status(board, play, turn)
+
+
+def main():
+    game = set_game()
+    turn = 1
+    for play in ['X', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X']:
+        print(f"Turn: {turn} - Player: {play}")
+
+
+
