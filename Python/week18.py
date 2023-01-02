@@ -1,7 +1,29 @@
 from os import system
 
 
-def check_status(game_board: list) -> int:
+def win_check(board: list, play: str) -> bool:
+    """
+
+    :param board: imports the updated board
+    :param play: imports the actual player
+    :return:
+    """
+    # First check the diagonals
+    win_sets = [[(0, 0), (1, 1), (2, 2)], [(2, 0), (1, 1), (0, 2)]]
+    for n in win_sets:
+        cells_filled = 0
+        for cells in n:
+            row, column = cells
+            if board[row][column] == play:
+                cells_filled += 1
+        if cells_filled == 3:
+            return True
+
+    # Now columns and rows
+
+
+
+def check_status() -> int:
     """
     Checks if the move is a winner or generates a draw.
     :return:
@@ -11,7 +33,7 @@ def check_status(game_board: list) -> int:
     """
 
 
-def show_game(game_board: list) -> None:
+def show_game(board: list) -> None:
     """
     Cleans the console and displays the current game-board.
     """
@@ -19,7 +41,7 @@ def show_game(game_board: list) -> None:
     i = 0
 
     system('cls')
-    for n in game_board:
+    for n in board:
         print(f" {n[0]} | {n[1]} | {n[2]} ")
         if i != 2:
             print(separator*11)
@@ -32,16 +54,16 @@ def set_game() -> list:
     :return:
     game-board list.
     """
-    game_board = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
-    show_game(game_board)
+    board = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
+    show_game(board)
 
-    return game_board
+    return board
 
 
-def valid_entry(game_board: list) -> tuple:
+def valid_entry(board: list) -> tuple:
     """
     Check that the entry does not go outside the bounds and that it is not occupied.
-    :param game_board: Used to check that the selected cell is not occupied.
+    :param board: Used to check that the selected cell is not occupied.
     :return: The verified row and column selection.
     """
     while True:
@@ -54,21 +76,21 @@ def valid_entry(game_board: list) -> tuple:
         except ValueError:
             print("Wrong entry")
         else:
-            if game_board[row][column] != ' ':
+            if board[row][column] != ' ':
                 return row, column
             else:
                 print("Cell already taken, try again")
-                show_game(game_board)
+                show_game(board)
 
 
-def set_play(game_board: list, play: str) -> int:
+def set_play(board: list, play: str) -> int:
     """
     Set the player's choice
-    :param game_board: the updated game-board
+    :param board: the updated game-board
     :param play: Can be x or o.
     :return: Returns a boolean that sets whether the game has ended.
     """
-    row, column = valid_entry(game_board)
-    game_board[row][column] = play
-    show_game(game_board)
-    return check_status(game_board)
+    row, column = valid_entry(board)
+    board[row][column] = play
+    show_game(board)
+    return check_status(board)
