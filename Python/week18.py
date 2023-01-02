@@ -98,8 +98,8 @@ def valid_entry(board: list) -> tuple:
         except ValueError:
             print("Wrong entry")
         else:
-            if board[row][column] != ' ':
-                return row, column
+            if board[row-1][column-1] == ' ':
+                return row-1, column-1
             else:
                 print("Cell already taken, try again")
                 show_game(board)
@@ -122,8 +122,18 @@ def set_play(board: list, play: str, turn: int) -> int:
 def main():
     game = set_game()
     turn = 1
-    for play in ['X', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X']:
-        print(f"Turn: {turn} - Player: {play}")
+    for player in ['X', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X']:
+        print(f"Turn: {turn} - Player: {player}")
+        if set_play(game, player, turn) == 1:
+            print(f"The winner is {player}")
+            break
+        elif set_play(game, player, turn) == 2:
+            print("DRAW!")
+            break
+        turn += 1
 
+
+if __name__ == '__main__':
+    main()
 
 
