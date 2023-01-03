@@ -16,6 +16,8 @@ def valid_entry() -> int:
             number = float(input("Insert a number: "))
             if int(number) != number:
                 raise ValueError
+            if number == 0:
+                raise ValueError
         except ValueError:
             print("Wrong input")
         else:
@@ -63,10 +65,14 @@ def gcd(a: list, b: list) -> int:
 
 
 def lcm(a: int, b: int):
-    return a*b/(gcd(factorization(a), factorization(b)))
+    return int(a*b/(gcd(factorization(a), factorization(b))))
+
 
 def main():
-    print(factorization(60))
+    a = valid_entry()
+    b = valid_entry()
+    print(f"gcd: {gcd(factorization(a), factorization(b))}")
+    print(f"LCM: {lcm(a, b)}")
 
 
 main()
