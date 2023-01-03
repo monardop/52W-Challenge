@@ -20,7 +20,7 @@ def valid_entry() -> int:
             print("Wrong input")
         else:
             return int(number)
-        
+
 
 def factorization(a: int) -> list:
     divisors = []
@@ -42,6 +42,24 @@ def factorization(a: int) -> list:
             a //= 9
         else:
             return divisors
+
+
+def gcd(a: list, b: list) -> int:
+    common_division = []
+    divisors = set(a+b)
+    result = 1
+
+    for number in divisors:
+        if number in b and number:
+            if a.count(number) < b.count(number):
+                common_division.append([number, a.count(number)])
+            else:
+                common_division.append([number, b.count(number)])
+
+    for n in common_division:
+        result *= pow(n[0], n[1])
+
+    return int(result)
 
 
 
