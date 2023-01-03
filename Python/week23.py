@@ -10,6 +10,18 @@
 """
 
 
+def valid_entry() -> int:
+    while True:
+        try:
+            number = float(input("Insert a number: "))
+            if int(number) != number:
+                raise ValueError
+        except ValueError:
+            print("Wrong input")
+        else:
+            return int(number)
+        
+
 def factorization(a: int) -> list:
     divisors = []
     while True:
@@ -31,17 +43,6 @@ def factorization(a: int) -> list:
         else:
             return divisors
 
-
-def valid_entry() -> int:
-    while True:
-        try:
-            number = float(input("Insert a number: "))
-            if int(number) != number:
-                raise ValueError
-        except ValueError:
-            print("Wrong input")
-        else:
-            return int(number)
 
 
 def main():
