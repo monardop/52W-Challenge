@@ -62,6 +62,8 @@ def gcd(a: list, b: list) -> int:
     return int(result)
 
 
+def lcm(a: int, b: int):
+    return a*b/(gcd(factorization(a), factorization(b)))
 
 def main():
     print(factorization(60))
