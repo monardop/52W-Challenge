@@ -44,11 +44,10 @@ def give_exchange(f):
             return []
         else:
             exchange_command = []
+            print(f"${change}")
             for n in VALID_ENTRY:
                 i = 0
-                print(change)
                 while change - n > 0:
-                    print(f"en el while {change}")
                     change -= n
                     i += 1
                 exchange_command.append((n, i))
