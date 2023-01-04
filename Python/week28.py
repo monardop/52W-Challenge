@@ -1,18 +1,19 @@
 """
- * Reto #28
- * MÁQUINA EXPENDEDORA
+ * Challenge #28
+ * Expend machine
 
- * Dificultad: MEDIA
+ * Difficult : average
  *
- * Enunciado: Simula el funcionamiento de una máquina expendedora creando una operación
- * que reciba dinero (array de monedas) y un número que indique la selección del producto.
- * - El programa retornará el nombre del producto y un array con el dinero de vuelta (con el menor
- *   número de monedas).
- * - Si el dinero es insuficiente o el número de producto no existe, deberá indicarse con un mensaje
- *   y retornar todas las monedas.
- * - Si no hay dinero de vuelta, el array se retornará vacío.
- * - Para que resulte más simple, trabajaremos en céntimos con monedas de 5, 10, 50, 100 y 200.
- * - Debemos controlar que las monedas enviadas estén dentro de las soportadas.
+ * Statement: Simulate the operation of a vending machine by creating an operation that receives money (coin array)
+ and a number indicating product selection.
+ * that receives money (array of coins) and a number indicating the product selection.
+ * The program will return the name of the product and an array with the money back (with the least number of coins).
+ * number of coins).
+ * If the money is insufficient or the product number does not exist, this must be indicated with a message
+ * and return all coins.
+ * If there is no money back, the array is returned empty.
+ * To make it simpler, we will work in cents with coins of 5, 10, 50, 100 and 200.
+ * We must check that the coins sent are within the supported ones.
  *
 """
 
@@ -38,36 +39,40 @@ def get_product(number: int) -> tuple:
 
 def give_exchange(f):
     def wrap(*args, **kwargs):
-        change = f()
+        change = f(*args, **kwargs)
         if change == 0:
-            return ()
+            return []
         else:
             exchange_command = []
             for n in VALID_ENTRY:
                 i = 0
+                print(change)
                 while change - n > 0:
+                    print(f"en el while {change}")
                     change -= n
                     i += 1
                 exchange_command.append((n, i))
-            return tuple(exchange_command)
+            return exchange_command
+    return wrap
 
 
 @give_exchange
 def get_money(value: float):
     inserted: float = 0
     while True:
-        inserted = float(input())
-        if inserted % 0.05 != 0:
-            print(f"We only accept: {VALID_ENTRY}")
-        elif inserted < value:
+        inserted = float(input("Insert: "))
+        if inserted < value:
             print("Insufficient balance")
+            inserted += float(input("Insert "))
         else:
             break
     if inserted != value:
-        return value - inserted
+        return inserted - value
     else:
         return 0
 
 
 if __name__ == '__main__':
     selection = get_product(3)
+    print(f"Your change: {get_money(selection[1])}")
+    print(f"Take your {selection[0]}")
