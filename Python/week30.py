@@ -1,7 +1,6 @@
 """
  * Challenge #30
  * WORD FRAME
-
  * Difficulty: EASY
  *
  * Statement: Create a function that receives a text and displays each word on a line,
@@ -10,22 +9,22 @@
 """
 
 
-def get_length(elements: list) -> int:
-    max_len = 0
-    for element in elements:
-        if len(element) > max_len:
-            max_len = len(element)
-    return max_len
-
-
 def draw_square(phrase: str) -> None:
-    icon = '*'
     aux_phrase = phrase.split()
-    length = get_length(aux_phrase)
+    print(aux_phrase)
+    print("x" * 20)
+    for n in range(len(aux_phrase)):
+        for space in range(21):
+            if space == 0:
+                print('x', end="")
+            elif space == 20 - len(aux_phrase[n]):
+                print('x')
+            elif space == (10 - len(aux_phrase[n]) // 2):
+                print(aux_phrase[n], end="")
+            else:
+                if space < 20 - len(aux_phrase[n]):
+                    print(" ", end="")
+    print("x" * 20)
 
-    for n, word in zip(range(length), aux_phrase):
-        if n in [0, len(aux_phrase)]:
-            print(icon*length)
-        else:
-            print(f"{icon}{' '*(length-2)}{icon}")
 
+draw_square("Hola a todo el mundo")
