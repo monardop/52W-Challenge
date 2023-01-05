@@ -27,4 +27,4 @@ def draw_square(phrase: str) -> None:
     print("x" * 20)
 
 
-draw_square("Hola a todo el mundo")
+draw_square("hello everybody in da world")
