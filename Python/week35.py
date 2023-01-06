@@ -9,15 +9,21 @@ class Pokemon(ABC):
         self. life = randint(100, 1000)
         self.power = randint(1, 100)
         self.defense = randint(1, 100)
-        self.is_defending = False
+        self.is_defending = 1
 
-    @abstractmethod
     def attack(self, victim):
-        pass
+        effectiveness = self.counter(True, victim.p_class)
+        damage = 50 * (self.power / self.defense) * effectiveness
+        return damage * self.is_defending
 
-    @abstractmethod
     def defend(self, attacker):
-        pass
+        effectiveness = self.counter(False, attacker.p_class)
+        if effectiveness == 0.5:
+            self.is_defending = 0.75
+        elif effectiveness == 1:
+            self.is_defending = 0.50
+        else:
+            self.is_defending = 0.25
 
     @abstractmethod
     def counter(self, atk_def: bool, pkm_type: str) -> float:
@@ -32,16 +38,6 @@ class Pokemon(ABC):
 class FirePokemon(Pokemon):
     def __init__(self, name):
         super().__init__(name, "Fire")
-
-    def attack(self, victim: Pokemon):
-        effectiveness = self.counter(True, victim.p_class)
-        if victim.is_defending:
-            pass
-        else:
-            return 50 * (self.power / self.defense) * effectiveness
-
-    def defend(self, attacker):
-        self.is_defending = True
 
     def counter(self, atk_def: bool, pkm_type: str) -> float:
         pokemon_type = ('Fire', 'Water', 'Plant', 'Electricity')
@@ -58,12 +54,6 @@ class WaterPokemon(Pokemon):
     def __init__(self, name):
         super().__init__(name, "Water")
 
-    def attack(self, victim):
-        pass
-
-    def defend(self, attacker):
-        pass
-
     def counter(self, atk_def: bool, pkm_type: str) -> float:
         pokemon_type = ('Fire', 'Water', 'Plant', 'Electricity')
         enemy: int = pokemon_type.index(pkm_type)
@@ -79,12 +69,6 @@ class PlantPokemon(Pokemon):
     def __init__(self, name):
         super().__init__(name, "Plant")
 
-    def attack(self, victim):
-        pass
-
-    def defend(self, attacker):
-        pass
-
     def counter(self, atk_def: bool, pkm_type: str) -> float:
         pokemon_type = ('Fire', 'Water', 'Plant', 'Electricity')
         enemy: int = pokemon_type.index(pkm_type)
@@ -99,12 +83,6 @@ class PlantPokemon(Pokemon):
 class ElectricPokemon(Pokemon):
     def __init__(self, name):
         super().__init__(name, "Electric")
-
-    def attack(self, victim):
-        pass
-
-    def defend(self, attacker):
-        self.is_defending = True
 
     def counter(self, atk_def: bool, pkm_type: str) -> float:
         pokemon_type = ('Fire', 'Water', 'Plant', 'Electricity')
