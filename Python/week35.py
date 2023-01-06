@@ -30,7 +30,7 @@ class Pokemon(ABC):
         """
         Check for the combination, so it can return the booster
         :param atk_def: True for attack, False for defend
-        :param pkm_type: pokemon type
+        :param pkm_type: Pokemon type
         :return: The booster for the defense or attack
         """
 
