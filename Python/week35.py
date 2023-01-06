@@ -13,4 +13,63 @@
  *  - Ataque: Entre 1 y 100.
  *  - Defensa: Entre 1 y 100.
 """
+from abc import ABC, abstractmethod
 
+
+class Pokemon(ABC):
+    def __init__(self, name, p_class):
+        self.name = name
+        self.p_class = p_class
+        self. life = 100
+
+    @abstractmethod
+    def attack(self, victim):
+        pass
+
+    @abstractmethod
+    def defend(self, attacker):
+        pass
+
+
+class FirePokemon(Pokemon):
+    def __init__(self, name):
+        super().__init__(name, "Fire")
+
+    def attack(self, victim):
+        pass
+
+    def defend(self, attacker):
+        pass
+
+
+class WaterPokemon(Pokemon):
+    def __init__(self, name):
+        super().__init__(name, "Water")
+
+    def attack(self, victim):
+        pass
+
+    def defend(self, attacker):
+        pass
+
+
+class PlantPokemon(Pokemon):
+    def __init__(self, name):
+        super().__init__(name, "Plant")
+
+    def attack(self, victim):
+        pass
+
+    def defend(self, attacker):
+        pass
+
+
+class ElectricPokemon(Pokemon):
+    def __init__(self, name):
+        super().__init__(name, "Electric")
+
+    def attack(self, victim):
+        pass
+
+    def defend(self, attacker):
+        pass
