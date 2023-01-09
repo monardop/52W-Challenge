@@ -35,3 +35,15 @@ bool checkAnagram(std::string &word1, std::string &word2){
     }
     
 }
+
+size_t countOccurrences(char c, std::string &str)
+{
+    size_t count = 0;
+    char tmp = static_cast<char>(tolower(static_cast<unsigned char>(c)));
+
+    for (char i : str)
+        if (tolower(static_cast<unsigned char>(i)) == tmp)
+            count++;
+
+    return count;
+}
