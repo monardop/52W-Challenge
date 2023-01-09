@@ -3,7 +3,7 @@
 
 
 bool checkAnagram(std::string &word1, std::string &word2);
-
+size_t countOccurrences(char c, std::string &str);
 
 
 
@@ -14,12 +14,18 @@ int main(){
     std::cin >> "Insert first word: " >> word1;
     std::cin >> "Insert second word: " >> word2;
 
+
     if(word1 == word2){
         std::cout << "Same words are not anagrams";
         return 0;
     }
 
-
+    if (checkAnagram(word1, word2)){
+        std::cout << "They are anagrams" << std::endl;
+    } else
+    {
+        std::cout << "Not anagram" << std::endl;
+    }
 
     return 0;
 }
@@ -29,12 +35,20 @@ bool checkAnagram(std::string &word1, std::string &word2){
     char abc[26] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 
                         'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 
                     'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'};
+    int occurrencesA, occurrencesB;
 
     for(int i = 0; i < 26; i++) {
-
+        occurrencesA = countOccurrences(abc[i], word1);
+        occurrencesB = countOccurrences(abc[i], word2);
+        if(occurrencesA != occurrencesB){
+            return false;
+        }
     }
+
+    return true;
     
 }
+
 
 size_t countOccurrences(char c, std::string &str)
 {
@@ -47,3 +61,4 @@ size_t countOccurrences(char c, std::string &str)
 
     return count;
 }
+
