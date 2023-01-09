@@ -1,3 +1,8 @@
+/*
+Week2: This program evaluates whether two text strings are anagrams.
+*/
+
+
 #include <iostream>
 #include <string>
 
@@ -49,7 +54,6 @@ bool checkAnagram(std::string &word1, std::string &word2){
     }
 
     return true;
-
 }
 
 
