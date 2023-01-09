@@ -14,7 +14,7 @@ class Pokemon(ABC):
     def attack(self, victim):
         effectiveness = self.counter(True, victim.p_class)
         damage = 50 * (self.power / self.defense) * effectiveness
-        return damage * self.is_defending
+        return damage * victim.is_defending
 
     def defend(self, attacker):
         effectiveness = self.counter(False, attacker.p_class)
