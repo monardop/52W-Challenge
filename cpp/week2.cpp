@@ -11,8 +11,11 @@ int main(){
     std::string word1;
     std::string word2;
 
-    std::cin >> "Insert first word: " >> word1;
-    std::cin >> "Insert second word: " >> word2;
+
+    std::cout << "Insert the first word: ";
+    std::cin >>  word1;
+    std::cout << "Insert the second one: ";
+    std::cin >>  word2;
 
 
     if(word1 == word2){
@@ -32,8 +35,8 @@ int main(){
 
 
 bool checkAnagram(std::string &word1, std::string &word2){
-    char abc[26] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 
-                        'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 
+    char abc[26] = {'a', 'b', 'c', 'd', 'e', 'f', 'g',
+                        'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
                     'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'};
     int occurrencesA, occurrencesB;
 
@@ -46,7 +49,7 @@ bool checkAnagram(std::string &word1, std::string &word2){
     }
 
     return true;
-    
+
 }
 
 
