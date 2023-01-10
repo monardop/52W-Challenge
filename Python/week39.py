@@ -3,19 +3,18 @@ Quick Sort algorithm
 """
 
 
-class Node:
-    def __init__(self, father_node):
-        self.father = father_node
-        self.left_child
-        self.right_child
+def quicksort(unsorted_list):
 
-    def get_mid_value(self):
-        prom = sum(self.father) / len(self.father)
+    if len(unsorted_list) > 2:
+        v = unsorted_list[0] + unsorted_list[len(unsorted_list) - 1] + unsorted_list[len(unsorted_list) - 1 / 2] / 3
+    elif len(unsorted_list) == 2:
+        v = unsorted_list[0] + unsorted_list[1] / 2
+    else:
+        v = unsorted_list[0]
 
-    def set_children(self):
-        pass
-
-
-
+    return quicksort(filter((lambda y: y < v), unsorted_list)) \
+        + [v] \
+        + quicksort(filter((lambda y: y >= v), unsorted_list))
 
 
+print(quicksort([9,4,2,3,1,5,6]))
