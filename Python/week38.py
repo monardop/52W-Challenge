@@ -21,8 +21,9 @@ def get_decimal(binary: str, sign_bit=False) -> int:
     is_negative = False
     if sign_bit:
         bytes_used = len(binary) - 2
-        if binary[0] == '1':
+        if binary.startswith('1'):
             is_negative = True
+            binary = binary[1:]
             binary.replace("1", "", 1)
         else:
             is_negative = False
@@ -39,6 +40,4 @@ def get_decimal(binary: str, sign_bit=False) -> int:
         return decimal_number
 
 
-print(get_decimal("1101101", True))
-
-# TODO: The negative function is not doing right
+print(get_decimal("1101101"))
