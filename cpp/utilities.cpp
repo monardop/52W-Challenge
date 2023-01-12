@@ -26,3 +26,13 @@ int positiveNumber()
     
     return input;
 }
+
+
+double pow(double number, int power) 
+{
+    for(int i = 0; i < power; i++)
+    {
+        number *= number;
+    }
+    return number;
+}
