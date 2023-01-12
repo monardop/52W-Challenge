@@ -1,7 +1,6 @@
 /*
 This module will have the function of storing validations and other types of functions that are necessary and that do not come by default in the standard library.
 */
-
 #include "utilities.h"
 
 int validInput(int least, int greatest)
@@ -11,7 +10,7 @@ int validInput(int least, int greatest)
     {
       std::cout << "Insert a number between" << least << " and " << greatest << ": ";
       std::cin >> input;  
-    } while (least < input < greatest);
+    } while (least < input && input < greatest);
     
     return input;
 }
