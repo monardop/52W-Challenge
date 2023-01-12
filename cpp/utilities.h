@@ -6,5 +6,4 @@
 int validInput(int, int);
 int positiveNumber();
 
-
 #endif
