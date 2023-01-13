@@ -9,6 +9,7 @@ float triangle();
 float square();
 float rectangle();
 
+// I'm going to use a function pointer since none of the three take arguments
 float (*figure[3])(void) = {triangle, square, rectangle};
 
 int main()
@@ -16,6 +17,7 @@ int main()
     int selection;
     float value;
 
+    // I'm assuming that the selection will be correct
     std::cout << "Main menu:\n" << "0- Triangle\n" << "1- Square\n" << "2- Rectangle\n";
     std::cin >> selection; 
     value = figure[selection]();
