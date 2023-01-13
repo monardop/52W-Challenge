@@ -6,5 +6,5 @@
 int validInput(int, int);
 int positiveNumber();
 double pow(double number, int power);
- 
+
 #endif
