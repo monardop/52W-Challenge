@@ -1,0 +1,10 @@
+:root {
+    --bg: #262626;
+    --bfAlt: #333430;
+    --mainColor: #dce38d;
+    --mainColorAlt: #f6f2cd;
+}
+
+*{
+    background: var(--bg);
+}
