@@ -8,3 +8,18 @@
 *{
     background: var(--bg);
 }
+
+.main-container {
+    margin: 50px;
+    display: grid;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-gap: 5px;
+}
+
+
+.exercise, img{
+    width: 100px;
+    height: 50px;
+}
+
